@@ -28,7 +28,6 @@ def match_target_language(source_lang):
 @bot.message_handler()
 def command_help(message):
     language = detect(message.text)
-    print(f"Detected language: {language}")
     text = message.text
     action = os.getenv('ACTION_TRANSLATE')
     if text[0] == '!':
