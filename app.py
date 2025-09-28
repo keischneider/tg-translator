@@ -40,7 +40,7 @@ def command_help(message):
     dev_prompt = raw_dev_prompt.format(from_lang=language, to_lang=target_language)
     user_prompt = raw_user_prompt.format(action=action, text=text)
     response = request(dev_prompt, user_prompt)
-    if action == os.getenv('ACTION_TRANSLATE'):
+    if text[0] == '*':
         tts = gTTS(text=response, lang=detect(response), slow=False)
         tts.save(mp3_path)
         bot.send_voice(message.chat.id, open(mp3_path, 'rb'))
